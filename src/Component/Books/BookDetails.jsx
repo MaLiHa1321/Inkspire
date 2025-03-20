@@ -15,7 +15,7 @@ const BookDetails = ({books}) => {
     <div className='flex gap-3 justify-center'>
 
     {
-        tags?.map((tag) =><div className="badge badge-secondary">{tag}</div>)
+        tags?.map((tag,idx) =><div className="badge badge-secondary" key={idx}>{tag}</div>)
     }
     </div>
   
