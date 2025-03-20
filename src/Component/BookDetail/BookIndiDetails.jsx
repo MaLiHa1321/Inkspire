@@ -1,12 +1,18 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { addToreadList } from '../../Utility/addToDo';
+
 
 const BookIndiDetails = () => {
     const {bookId} = useParams();
     const data  = useLoaderData();
     const id = parseInt(bookId);
     const book = data?.find( book => book.bookId === id)
-   const {bookId: currentBookId} = book;
+  
+
+   const handleAddToRead =(id) =>{
+     addToreadList(id);
+   }
 
     return (
         <div>
@@ -32,8 +38,8 @@ const BookIndiDetails = () => {
                       </div>
 
                       <div className='flex gap-5 m-4'>
-                      <button className="btn btn-outline btn-info">Read</button>
-                      <button className="btn btn-primary">Wishlist</button>
+                      <button onClick={() => handleAddToRead(id)} className="btn btn-outline btn-info">Mark as Read</button>
+                      <button  className="btn btn-primary">Add to Wishlist</button>
                       </div>
                 </div>
             </div>
